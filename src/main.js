@@ -1,11 +1,12 @@
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
-import VueAwesomeSwiper from 'vue-awesome-swiper';
-import 'swiper/swiper-bundle.css'
+import VueSplide from '@splidejs/vue-splide';
+import '@splidejs/splide/dist/css/themes/splide-default.min.css';
 
 Vue.config.productionTip = false;
-Vue.use(VueAwesomeSwiper, /* { default options with global component } */)
+Vue.use( VueSplide );
+
 
 new Vue({
   router,

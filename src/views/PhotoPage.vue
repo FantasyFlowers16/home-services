@@ -1,20 +1,21 @@
 <template>
 <div>
   <router-link to="/" class="back" >Назад</router-link>
-  <h1 @click="openSlider()">Photo:</h1>
-  <div class="photo-container">
+  <h1 >Photo:</h1>
+  <div v-if="!closeOpenSlider" class="photo-container">
     <div v-for="item in this.photoList" :key="item.id"  >
-      <photo-item :photo="item" ></photo-item>
+      <photo-item  :photo="item" @click="openSlider"></photo-item>
     </div>
   </div>
   <div v-if="closeOpenSlider">
-    <div class="rielt-history-slider history-slider">
-      <swiper class="history-slider__inner"   :options="swiperOption">
-        <swiper-slide  class="history-slider__item" v-for="photo in photoList" :key="photo.id">
-          <img :src="photo.url"  class="history-slider__img">
-        </swiper-slide>
-      </swiper>
-    </div>
+
+    <splide :options="options">
+      <splide-slide  v-for="item in this.photoList" :key="item.id" class="slide">
+        <img :src="item.url" class="photo-slide">
+      </splide-slide>
+
+    </splide>
+
   </div>
 </div>
 
@@ -22,43 +23,40 @@
 
 <script>
 import PhotoItem from "../components/itemPhoto";
-import { swiper, swiperSlide } from 'vue-awesome-swiper'
+
 
 export default {
   components: {
     PhotoItem,
-    swiper,
-    swiperSlide
   },
   name: "photo-page",
   data () {
     return {
-      closeOpenSlider: false,
       photoList:[
-          {
-            url:"https://is.gd/xNetps",
-            id:1
-          },
-          {
-            url:"https://is.gd/6ISirt",
-            id:3
-          },
-          {
-            url:"https://is.gd/iEPxwm",
-            id:4
-          },{
-            url:"https://is.gd/v8WtTv",
-            id:5
-          },{
-            url:"https://is.gd/y87P2w",
-            id:6
-          },{
-            url:"https://is.gd/NjTZsr",
-            id:7
-          },{
-            url:"https://is.gd/Rx7SPg",
-            id:8
-          },
+        {
+          url:"https://is.gd/xNetps",
+          id:1
+        },
+        {
+          url:"https://is.gd/6ISirt",
+          id:3
+        },
+        {
+          url:"https://is.gd/iEPxwm",
+          id:4
+        },{
+          url:"https://is.gd/v8WtTv",
+          id:5
+        },{
+          url:"https://is.gd/y87P2w",
+          id:6
+        },{
+          url:"https://is.gd/NjTZsr",
+          id:7
+        },{
+          url:"https://is.gd/Rx7SPg",
+          id:8
+        },
         {
           url:"https://is.gd/xNetps",
           id:9
@@ -84,20 +82,18 @@ export default {
           id:15
         }
 
-
-
-
       ],
-      swiperOption:{
-        loop: false,
-        spaceBetweenSlides: 50,
-        slidesPerView: 'auto',
+      closeOpenSlider: true,
+      options: {
+        rewind : true,
+        width  : 800,
+        gap    : '1rem',
       },
     }
   },
   methods:{
     openSlider(){
-      this.closeOpenSlider=!this.closeOpenSlider
+      this.closeOpenSlider = !this.closeOpenSlider
     }
   }
 }
@@ -105,6 +101,17 @@ export default {
 
 <style lang="sass">
 
+.slide
+  width: 400px
+  height: auto
+  display: flex!important
+  align-items: center!important
+  justify-content: center!important
+.photo-slide
+  width: 600px
+  display: flex
+  align-items: center
+  height: 400px
 .back
   text-decoration: none
   color: black
