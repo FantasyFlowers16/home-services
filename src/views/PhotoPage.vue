@@ -1,40 +1,43 @@
 <template>
-<div>
-  <router-link to="/" class="back" >Назад</router-link>
-  <h1 >Photo:</h1>
-  <div v-if="!closeOpenSlider" class="photo-container">
-    <div v-for="item in this.photoList" :key="item.id"  >
-      <photo-item  :photo="item" @click="openSlider"></photo-item>
+    <div>
+      <h1 >Photo:</h1>
+      <div v-if="!closeOpenSlider" class="photo-container">
+        <div v-for="item in this.photoList" :key="item.id"  >
+          <photo-item  :photo="item" @clickItem="openSlider()"></photo-item>
+        </div>
+      </div>
+      <modal-slider v-if="this.modalVisible" @close="closeModal"></modal-slider>
+      <div v-if="closeOpenSlider">
+    <!--    <splide :options="options">-->
+    <!--      <splide-slide  v-for="item in this.photoList" :key="item.id" class="slide">-->
+    <!--        <img :src="item.url" class="photo-slide">-->
+    <!--      </splide-slide>-->
+    <!--    </splide>-->
+
+      </div>
+      <div v-if="this.isActiveLoader" class="loader"></div>
     </div>
-  </div>
-  <div v-if="closeOpenSlider">
 
-    <splide :options="options">
-      <splide-slide  v-for="item in this.photoList" :key="item.id" class="slide">
-        <img :src="item.url" class="photo-slide">
-      </splide-slide>
-
-    </splide>
-
-  </div>
-</div>
 
 </template>
 
 <script>
 import PhotoItem from "../components/itemPhoto";
-
+import ModalSlider from "@/components/modalSlider";
 
 export default {
   components: {
-    PhotoItem,
+    ModalSlider,PhotoItem
+    // PhotoItem,
   },
   name: "photo-page",
   data () {
     return {
+      isActiveLoader: false,
+      modalVisible:false,
       photoList:[
         {
-          url:"https://is.gd/xNetps",
+          url:"https://is.gd/iEPxwm",
           id:1
         },
         {
@@ -53,9 +56,6 @@ export default {
         },{
           url:"https://is.gd/NjTZsr",
           id:7
-        },{
-          url:"https://is.gd/Rx7SPg",
-          id:8
         },
         {
           url:"https://is.gd/xNetps",
@@ -83,7 +83,7 @@ export default {
         }
 
       ],
-      closeOpenSlider: true,
+      closeOpenSlider: false,
       options: {
         rewind : true,
         width  : 800,
@@ -93,14 +93,39 @@ export default {
   },
   methods:{
     openSlider(){
-      this.closeOpenSlider = !this.closeOpenSlider
+      this.modalVisible=true
+    },
+    showModal() {
+      this.modalVisible = true;
+    },
+    closeModal() {
+      this.modalVisible = false;
     }
+  },
+  mounted() {
+    window.addEventListener('load', () => {
+      this.isActiveLoader = true
+    })
+  },
+  updated: function () {
+    this.$nextTick(function () {
+      this.isActiveLoader = false
+    })
   }
 }
 </script>
 
 <style lang="sass">
 
+
+.loader
+  z-index: 100
+  position: absolute
+  background: grey
+  top: 0
+  left: 0
+  bottom: 0
+  right: 0
 .slide
   width: 400px
   height: auto
@@ -108,10 +133,14 @@ export default {
   align-items: center!important
   justify-content: center!important
 .photo-slide
-  width: 600px
+  width: 90%
   display: flex
   align-items: center
-  height: 400px
+  height: auto
+  object-fit: cover
+
+  //filter: blur(1px)
+
 .back
   text-decoration: none
   color: black

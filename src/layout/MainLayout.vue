@@ -1,15 +1,10 @@
 <template>
-  <layout>
-    <head>
-      <link rel="stylesheet" href="@splidejs/splide/dist/css/themes/splide-default.min.css">
+  <div>
+    <router-view />
 
-    </head>
-    <container>
-      <router-view />
-    </container>
-    <footer>
-    </footer>
-  </layout>
+  </div>
+
+
 
 
 </template>

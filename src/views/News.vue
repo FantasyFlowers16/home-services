@@ -110,11 +110,8 @@ export default {
   methods:{
     showModal(data) {
       this.onlyNews = data
-      console.log(this.onlyNews)
       this.isModalVisible = true;
-
-
-    },
+      },
     closeModal() {
       this.isModalVisible = false;
     }

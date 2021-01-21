@@ -1,7 +1,7 @@
 <template>
-<div >
-  <img :src="this.photo.url" class="photo" @click="openSlider">
-    
+<div>
+  <img :src="photo.url" class="photo" v-on:click="openSlider(photo.id)">
+
 
 </div>
 </template>
@@ -16,6 +16,12 @@ export default {
    data() {
     return {
 
+    }
+  },
+  methods: {
+    openSlider(x){
+      console.log(x)
+       this.$emit('clickItem', x);
     }
   },
   props:['photo'],
