@@ -1,5 +1,9 @@
 <template>
     <div>
+      <transition name="modal-fade">
+        <loader v-if="this.loader" ></loader>
+      </transition>
+      <router-link to="/" class="back" >Назад</router-link>
       <h1 >Photo:</h1>
       <div v-if="!closeOpenSlider" class="photo-container">
         <div v-for="item in this.photoList" :key="item.id"  >
@@ -8,31 +12,24 @@
       </div>
       <modal-slider v-if="this.modalVisible" @close="closeModal"></modal-slider>
       <div v-if="closeOpenSlider">
-    <!--    <splide :options="options">-->
-    <!--      <splide-slide  v-for="item in this.photoList" :key="item.id" class="slide">-->
-    <!--        <img :src="item.url" class="photo-slide">-->
-    <!--      </splide-slide>-->
-    <!--    </splide>-->
-
       </div>
-      <div v-if="this.isActiveLoader" class="loader"></div>
     </div>
-
-
 </template>
 
 <script>
 import PhotoItem from "../components/itemPhoto";
 import ModalSlider from "@/components/modalSlider";
+import Loader from "@/components/loader";
 
 export default {
   components: {
-    ModalSlider,PhotoItem
+    ModalSlider,PhotoItem,Loader
     // PhotoItem,
   },
   name: "photo-page",
   data () {
     return {
+      loader:true,
       isActiveLoader: false,
       modalVisible:false,
       photoList:[
@@ -94,38 +91,46 @@ export default {
   methods:{
     openSlider(){
       this.modalVisible=true
+      this.loader=true
+      this.openLoader(1500)
+
     },
     showModal() {
       this.modalVisible = true;
     },
     closeModal() {
       this.modalVisible = false;
+    },
+    openLoader(time){
+      this.loader = setInterval(this.closeLoader, time)
+    },
+    closeLoader(){
+      this.loader=false
     }
   },
-  mounted() {
-    window.addEventListener('load', () => {
-      this.isActiveLoader = true
-    })
+  mounted () {
+      this.loader = setInterval(this.closeLoader, 1500)
+    // window.addEventListener('load', () => {
+    //   this.isActiveLoader = true
+    // })
   },
-  updated: function () {
-    this.$nextTick(function () {
-      this.isActiveLoader = false
-    })
-  }
+
 }
 </script>
 
 <style lang="sass">
+@import '../assets/styles/mixin'
+body
+  +loader
 
+.modal-fade-enter,
+.modal-fade-leave-active
+  opacity: 0
 
-.loader
-  z-index: 100
-  position: absolute
-  background: grey
-  top: 0
-  left: 0
-  bottom: 0
-  right: 0
+.modal-fade-enter-active,
+.modal-fade-leave-active
+  transition: opacity .5s ease
+
 .slide
   width: 400px
   height: auto
