@@ -1,0 +1,36 @@
+
+=loader()
+  .modal-fade-enter,
+  .modal-fade-leave-active
+    opacity: 0
+
+  .modal-fade-enter-active,
+  .modal-fade-leave-active
+    transition: opacity .5s ease
+  .loader
+    z-index: 100
+    position: absolute
+    background: #b4c7c6
+    top: 0
+    left: 0
+    bottom: 0
+    right: 0
+  //filter: blur(1px)
+  .back
+    text-decoration: none
+    color: black
+    text-align: left
+    padding-top: 20px
+    padding-left: 40px
+    position: relative
+    cursor: pointer
+    display: block
+    &:before
+      content: ''
+      display: block
+      position: absolute
+      background-image: url('../assets/arrow.png')
+      background-size: cover
+      width: 16px
+      height: 12px
+      left: 10px

@@ -1,6 +1,9 @@
 <template>
   <div>
     <div class="news-list">
+      <transition name="modal-fade">
+        <loader v-if="this.loader" ></loader>
+      </transition>
       <router-link to="/" class="back" >Назад</router-link>
 
       <h1 class="news">News</h1>
@@ -19,13 +22,15 @@
 <script>
 import NewsItem from "../components/newsItem";
 import PageNewsOnly from "../components/modalPage";
+import Loader from "@/components/loader";
 
 export default {
   components: {
-    NewsItem,PageNewsOnly
+    NewsItem,PageNewsOnly,Loader
   },
   data () {
     return {
+      loader:true,
       onlyNews: [],
       isModalVisible: false,
       news: [
@@ -114,14 +119,28 @@ export default {
       },
     closeModal() {
       this.isModalVisible = false;
-    }
+    },
+    closeLoader(){
+      this.loader=false
+    },
 
-  }
+  },
+  mounted () {
+    this.loader = setInterval(this.closeLoader, 1500)
+
+  },
 
 }
 </script>
 <style lang="sass" >
+@import '../assets/styles/mixin'
+body
+  height: 100vh
+  background: url('../assets/news.jpg') no-repeat top center
+
+  +loader
 .news-list
+
   margin-top: -10px
   margin-left: -10px
   margin-right: -10px
