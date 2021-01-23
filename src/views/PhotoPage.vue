@@ -1,5 +1,6 @@
 <template>
     <div>
+      <router-link to="/" class="back" >Назад</router-link>
       <h1 >Photo:</h1>
       <div v-if="!closeOpenSlider" class="photo-container">
         <div v-for="item in this.photoList" :key="item.id"  >
