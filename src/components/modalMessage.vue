@@ -11,8 +11,9 @@
             x
           </button>
           <slot name="body">
-            Ваша заявка отправлена
+            <div class="body__title">Ваша заявка отправлена</div>
           </slot>
+          <div class="modal__icon"></div>
         </section>
       </div>
     </div>
@@ -46,7 +47,15 @@ export default {
   align-items: center
   opacity: 1
 
-
+.modal
+  &__icon
+    position: absolute
+    background: url("../assets/svg/success.svg")
+    width: 66px
+    height: 66px
+    top: 50%
+    left: calc(50% - 33px)
+    background-size: cover
 .modal-news
   position: relative
   width: 80%
@@ -81,7 +90,7 @@ export default {
 
 .modal-body
   position: relative
-  padding: 20px 15px
+  padding: 45px 15px 20px 15px
   text-align: center
   font-size: 18px
   line-height: 28px

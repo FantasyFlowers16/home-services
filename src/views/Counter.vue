@@ -97,7 +97,7 @@ body
     text-align: left
 .title-container
   display: flex
-  border: 1px solid #9ff1a0
+  border: 1px solid #d4d4d4
   border-radius: 8px 8px 0 0
   overflow: hidden
 .title-item
@@ -110,7 +110,7 @@ body
     border-right: 0
   &.active
     transition: background .2s ease
-    background: #9ff1a0
+    background: #cef9ce
 .form
   padding: 16px
 
