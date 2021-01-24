@@ -31,14 +31,12 @@ export default {
 </script>
 
 <style lang="sass" >
-.photo-container
-    display: flex
-    flex-wrap: wrap
+
 .photo
   width: 100px
   height: 100px
   margin: 10px
-  border-radius:10px
+  border-radius: 10px
   object-fit: cover
   cursor: pointer
 

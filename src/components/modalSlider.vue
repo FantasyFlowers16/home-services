@@ -106,6 +106,7 @@ export default {
   display: flex
   justify-content: center
   align-items: center
+  opacity: 1
 
 
 .modal

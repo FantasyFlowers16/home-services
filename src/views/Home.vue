@@ -12,6 +12,10 @@
         <router-link to="/room" class="menu__item"> Квартиры в продаже</router-link>
       </div>
       <div class="menu__item-container">
+        <router-link to="/ads" class="menu__item">Объявления</router-link>
+        <router-link to="/counter" class="menu__item"> Показания счетчиков</router-link>
+      </div>
+      <div class="menu__item-container">
         <a class="menu__item big">что-то большое</a>
       </div>
 
@@ -52,24 +56,17 @@ export default {
   background-size: cover
   background: url('../assets/news.jpg') no-repeat 55% 20%
   min-width: 320px
-
   width: 100%
   position: absolute
   height: 100%
-  margin-left: -10px
-  margin-top: -10px
-
-
-  //opacity: 0.7
-
-  //z-index: 1
 .menu
   display: flex
   flex-wrap: wrap
-
   &__item-container
     width: 100%
     display: flex
+    box-sizing: border-box
+    margin: 0 16px
   &__item
     text-align: center
     text-decoration: none
@@ -88,9 +85,12 @@ export default {
     cursor: pointer
     font-weight: bold
     transition: all .2s ease-in
+
     &:nth-child(2n)
       margin-left: 10px
     &:hover
+      text-decoration:  none
+      color: black
       background: white
       font-size: 17px
 @media screen and (min-width: 768px)

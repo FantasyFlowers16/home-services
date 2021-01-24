@@ -135,15 +135,9 @@ export default {
 <style lang="sass" >
 @import '../assets/styles/mixin'
 body
-  height: 100vh
-  background: url('../assets/news.jpg') no-repeat top center
-
   +loader
 .news-list
-
   margin-top: -10px
-  margin-left: -10px
-  margin-right: -10px
   background: url('../assets/news.jpg') no-repeat top center
   -webkit-background-size: 100%
   -moz-background-size: 100%
@@ -163,6 +157,8 @@ body
   box-sizing: border-box
   opacity: 1!important
   &__title
+    font-size: 23px
+    font-weight: bold
     text-align: left
 .back
   text-decoration: none
@@ -188,6 +184,7 @@ body
     &__container
       display: inline-flex
       flex-wrap: wrap
+
 @media screen and (min-width: 1280px)
   .news
     width: 30%

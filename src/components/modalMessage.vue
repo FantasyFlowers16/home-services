@@ -2,22 +2,16 @@
   <transition name="modal-fade">
     <div class="modal-backdrop">
       <div class="modal-news">
-
-        <header class="modal-header">
-          <slot name="header">
-          {{news.newsTitle}}
-            <button
-                type="button"
-                class="btn-close"
-                @click="close"
-            >
-              x
-            </button>
-          </slot>
-        </header>
         <section class="modal-body">
+          <button
+              type="button"
+              class="btn-close"
+              @click="close"
+          >
+            x
+          </button>
           <slot name="body">
-            {{news.newsText}}
+            Ваша заявка отправлена
           </slot>
         </section>
       </div>
@@ -55,8 +49,8 @@ export default {
 
 .modal-news
   position: relative
-  width: 95%
-  height: 80%
+  width: 80%
+  height: 200px
   background: #FFFFFF
   box-shadow: 2px 2px 20px 1px
   overflow-x: auto
@@ -88,15 +82,15 @@ export default {
 .modal-body
   position: relative
   padding: 20px 15px
-  text-align: left
+  text-align: center
   font-size: 18px
   line-height: 28px
 
 
 .btn-close
-  position: fixed
-  right: 16px
-  top: 84px
+  position: absolute
+  right: 14px
+  top: 0
   border: none
   font-size: 20px
   cursor: pointer

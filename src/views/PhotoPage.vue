@@ -4,8 +4,8 @@
         <loader v-if="this.loader" ></loader>
       </transition>
       <router-link to="/" class="back" >Назад</router-link>
-      <h1 >Photo:</h1>
-      <div v-if="!closeOpenSlider" class="photo-container">
+      <div class="b-photo__title">Photo:</div>
+      <div v-if="!closeOpenSlider" class="b-photo-container">
         <div v-for="item in this.photoList" :key="item.id"  >
           <photo-item  :photo="item" @clickItem="openSlider()"></photo-item>
         </div>
@@ -120,9 +120,16 @@ export default {
 
 <style lang="sass">
 @import '../assets/styles/mixin'
+.b-photo
+  &__title
+    font-size: 23px
+    font-weight: bold
 body
   +loader
 
+.b-photo-container
+  display: flex
+  flex-wrap: wrap
 .modal-fade-enter,
 .modal-fade-leave-active
   opacity: 0
@@ -132,7 +139,7 @@ body
   transition: opacity .5s ease
 
 .slide
-  width: 400px
+  width: 300px
   height: auto
   display: flex!important
   align-items: center!important
@@ -164,5 +171,7 @@ body
     width: 16px
     height: 12px
     left: 10px
-
+@media screen and (min-width: 768px)
+  .slide
+    width: 200px
 </style>

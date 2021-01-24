@@ -5,6 +5,8 @@ import Room from '../views/FreeRoom.vue'
 import Photo from '../views/PhotoPage.vue'
 import Chat from '../views/Chat.vue'
 import Layout from '../layout/MainLayout'
+import ADS from '../views/ads'
+import Counter from "@/views/Counter";
 
 
 Vue.use(VueRouter);
@@ -19,6 +21,11 @@ const routes = [
         path: '/',
         name: 'Home',
         component: Home
+      },
+      {
+        path: '/ads',
+        name: 'ADS',
+        component: ADS
       },
       {
         path: '/news',
@@ -39,6 +46,11 @@ const routes = [
         path: '/chat',
         name: 'Chat',
         component:Chat
+      },
+      {
+        path: '/counter',
+        name: 'Counter',
+        component:Counter
       }
          ]
   },

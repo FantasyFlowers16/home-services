@@ -21,7 +21,7 @@ export default {
   cursor: pointer
   background: #c9d6d8
   z-index: 10
-  padding: 5px 10px
+  padding: 5px 10px 15px 10px
   border-radius: 10px
   border: 1px solid cadetblue
   opacity: 0.9
@@ -29,17 +29,17 @@ export default {
   transition: all .2s ease-in
   max-height: 195px
   overflow: hidden
-  line-height: 28px
+  line-height: 23px
   &:hover
     opacity: 1
     background-color: #cde4ea
 
   &__title
-    margin: 20px 0 5px 0
-    font-size: 24px
+    margin: 10px 0 5px 0
+    font-size: 18px
     font-weight: bold
   &__text
-    font-size: 18px
+    font-size: 15px
     text-overflow: ellipsis
     max-height: 163px
     overflow: hidden
@@ -49,7 +49,12 @@ export default {
     -webkit-box-orient: vertical
 @media screen and (min-width: 768px)
   .news-item
-    max-height: 195px
+    max-height: 216px
     overflow: hidden
     line-height: 28px
+    &__title
+      font-size: 24px
+    &__text
+      font-size: 18px
+
 </style>
