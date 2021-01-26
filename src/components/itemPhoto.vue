@@ -1,8 +1,6 @@
 <template>
-<div>
+<div class="photo-container">
   <img :src="photo.url" class="photo" v-on:click="openSlider(photo.id)">
-
-
 </div>
 </template>
 
@@ -33,12 +31,13 @@ export default {
 <style lang="sass" >
 
 .photo
-  width: 100px
-  height: 100px
+  width: calc(100% - 20px)
+  height: auto
   margin: 10px
   border-radius: 10px
   object-fit: cover
   cursor: pointer
+  max-width: 450px
 
 
 
@@ -46,6 +45,8 @@ export default {
   .photo
     width: 250px
     height: 250px
+    max-width: none
+
 @media screen and (min-width: 1024px)  
   .photo
     transition: all .3s ease-in-out 

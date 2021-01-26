@@ -5,6 +5,7 @@
       <div class="room-item__address">{{this.data.address}}</div>
       <div class="room-item__photo-container">
         <img src="../assets/rooms/photo.jpg" class="room-item__photo">
+<!--        <img :src=require(this.data.img) class="room-item__photo">-->
       </div>
       <div class="room-item__price">{{this.data.price}}<span> рублей</span></div>
       <div class="room-item__price-metr">{{this.data.metr}}<span> м<sup>2</sup></span></div>

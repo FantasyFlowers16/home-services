@@ -147,6 +147,7 @@ body
   -moz-background-size: cover
   -o-background-size: cover
   background-size: cover
+  height: 100vh
 //background: rgb(247,113,39)
   //background: linear-gradient(90deg, rgba(247,113,39,1) 0%, rgba(251,150,72,1) 11%, rgba(121,105,88,1) 99%)
 .news

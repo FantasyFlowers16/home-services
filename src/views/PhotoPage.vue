@@ -5,9 +5,10 @@
       </transition>
       <router-link to="/" class="back" >Назад</router-link>
       <div class="b-photo__title">Photo:</div>
+
       <div v-if="!closeOpenSlider" class="b-photo-container">
-        <div v-for="item in this.photoList" :key="item.id"  >
-          <photo-item  :photo="item" @clickItem="openSlider()"></photo-item>
+        <div v-for="item in this.photoList" :key="item.id" class="b-photo-container">
+          <photo-item v-if="!closeOpenSlider"  :photo="item" @clickItem="openSlider()"></photo-item>
         </div>
       </div>
       <modal-slider v-if="this.modalVisible" @close="closeModal"></modal-slider>
@@ -128,8 +129,10 @@ body
   +loader
 
 .b-photo-container
+  pointer-events: none
   display: flex
   flex-wrap: wrap
+  justify-content: center
 .modal-fade-enter,
 .modal-fade-leave-active
   opacity: 0
@@ -172,6 +175,8 @@ body
     height: 12px
     left: 10px
 @media screen and (min-width: 768px)
+  .b-photo-container
+    pointer-events: inherit
   .slide
-    width: 200px
+    width: 400px
 </style>
