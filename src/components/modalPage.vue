@@ -66,16 +66,15 @@ export default {
 
 
 .modal-header
-  padding: 15px
+  padding: 15px 65px 15px 15px
   display: flex
   font-size: 20px
   font-weight: bold
-
-
-.modal-header
   border-bottom: 1px solid #eeeeee
   color: #4AAE9B
   justify-content: space-between
+
+
 
 .modal-fade-enter,
 .modal-fade-leave-active
@@ -98,7 +97,7 @@ export default {
   right: 16px
   top: 84px
   border: none
-  font-size: 20px
+  font-size: 30px
   cursor: pointer
   font-weight: bold
   color: #4AAE9B
@@ -120,5 +119,5 @@ export default {
     height: 50%
   .btn-close
     position: absolute
-    top: 0
+    top: 2px
 </style>

@@ -19,7 +19,7 @@ export default {
 
 .news-item
   cursor: pointer
-  background: #c9d6d8
+  background: #ccdeea
   z-index: 10
   padding: 5px 10px 15px 10px
   border-radius: 10px
@@ -32,7 +32,7 @@ export default {
   line-height: 23px
   &:hover
     opacity: 1
-    background-color: #cde4ea
+    background-color: #89b3d4
 
   &__title
     margin: 10px 0 5px 0

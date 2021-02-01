@@ -4,7 +4,7 @@
       <transition name="modal-fade">
         <loader v-if="this.loader" ></loader>
       </transition>
-      <router-link to="/" class="back" >Назад</router-link>
+<!--      <router-link to="/" class="back" >Назад</router-link>-->
 
       <h1 class="news">News</h1>
       <div class="news__container">
@@ -137,16 +137,15 @@ export default {
 body
   +loader
 .news-list
-  margin-top: -10px
-  background: url('../assets/news.jpg') no-repeat top center
-  -webkit-background-size: 100%
-  -moz-background-size: 100%
-  -o-background-size: 100%
-  background-size: 100%
-  -webkit-background-size: cover
-  -moz-background-size: cover
-  -o-background-size: cover
-  background-size: cover
+  //background: url('../assets/news.jpg') no-repeat top center
+  //-webkit-background-size: 100%
+  //-moz-background-size: 100%
+  //-o-background-size: 100%
+  //background-size: 100%
+  //-webkit-background-size: cover
+  //-moz-background-size: cover
+  //-o-background-size: cover
+  //background-size: cover
   height: 100vh
 //background: rgb(247,113,39)
   //background: linear-gradient(90deg, rgba(247,113,39,1) 0%, rgba(251,150,72,1) 11%, rgba(121,105,88,1) 99%)
@@ -161,6 +160,8 @@ body
     font-size: 23px
     font-weight: bold
     text-align: left
+
+
 .back
   text-decoration: none
   color: black
@@ -189,4 +190,9 @@ body
 @media screen and (min-width: 1280px)
   .news
     width: 30%
+
+@media screen and (min-width: 1920px)
+  .news-list
+    max-width: 1920px
+    margin: 0 auto
 </style>

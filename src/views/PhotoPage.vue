@@ -3,8 +3,8 @@
       <transition name="modal-fade">
         <loader v-if="this.loader" ></loader>
       </transition>
-      <router-link to="/" class="back" >Назад</router-link>
-      <div class="b-photo__title">Photo:</div>
+<!--      <router-link to="/" class="back" >Назад</router-link>-->
+      <h1 class="b-photo__title">Photo:</h1>
 
       <div v-if="!closeOpenSlider" class="b-photo-container">
         <div v-for="item in this.photoList" :key="item.id" class="b-photo-container">
@@ -123,9 +123,16 @@ export default {
 @import '../assets/styles/mixin'
 .b-photo
   &__title
-    font-size: 23px
     font-weight: bold
+    padding: 10px
+    margin-bottom: 10px
 body
+  //background-size: cover
+  //background: #4CCEB2 /* Для браузеров, которые не поддерживают градиенты */
+  //background: -webkit-radial-gradient(#4CCEB2, #2F8FD8) /* Для Opera 11.1 - 12.0 */
+  //background: -o-radial-gradient(#4CCEB2, #2F8FD8) /* Для Opera 11.1 - 12.0 */
+  //background: -moz-radial-gradient(#4CCEB2, #2F8FD8) /* Для Firefox 3.6 - 15 */
+  //background: radial-gradient(#4CCEB2, #2F8FD8) /* Стандартный синтаксис */
   +loader
 
 .b-photo-container

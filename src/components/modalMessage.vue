@@ -10,8 +10,8 @@
           >
             x
           </button>
-          <slot name="body">
-            <div class="body__title">Ваша заявка отправлена</div>
+          <slot name="m-body">
+            <div class="m-body__title">Ваша заявка отправлена</div>
           </slot>
           <div class="modal__icon"></div>
         </section>
@@ -118,10 +118,19 @@ export default {
   border-radius: 2px
 
 @media screen and (min-width: 768px)
+  .m-body
+    &__title
+      font-size: 28px
   .modal-news
     width: 70%
     height: 50%
   .btn-close
     position: absolute
     top: 0
+  .modal
+    &__icon
+      width: 120px
+      height: 120px
+      top: calc(50% - 30px)
+      left: calc(50% - 60px)
 </style>

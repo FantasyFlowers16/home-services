@@ -3,8 +3,10 @@
     <transition name="modal-fade">
       <loader v-if="this.loader" ></loader>
     </transition>
-    <modal-message v-if="isModalVisible"  @close="closeModal"></modal-message>
-    <router-link to="/" class="back" >Назад</router-link>
+    <transition name="modal-fade">
+      <modal-message v-if="isModalVisible"  @close="closeModal"></modal-message>
+    </transition>
+<!--    <router-link to="/" class="back" >Назад</router-link>-->
     <div class="b-counter__title">Показания счетчиков</div>
 
     <div class="form-container">
@@ -18,7 +20,9 @@
         <input class="input" name="room" v-model="room"><label for="room" class="label">Квартира</label>
         <input v-if="this.waterHot" class="input" name="data" v-model="dataHot"> <label v-if="this.waterHot"  for="data" class="label">Ваши показания счетчиков горячей воды</label>
         <input v-if="this.waterCold" class="input" name="data" v-model="dataCold"> <label v-if="this.waterCold" for="data" class="label">Ваши показания счетчиков хол. воды</label>
+        <div v-if="validForm" class="form-container__error">Заполните все поля</div>
         <button class="button" @click="OpenModal()" v-on:submit.prevent>Отправить</button>
+
       </form>
 
     </div>
@@ -46,7 +50,8 @@ export default {
       dataCold:'',
       waterHot: true,
       waterCold:false,
-      isModalVisible: false
+      isModalVisible: false,
+      validForm:false
     }
   },
   methods:{
@@ -70,6 +75,9 @@ export default {
         this.fio=''
         this.house=''
         this.room=''
+        this.validForm=false
+      }else{
+        this.validForm=true
       }
 
     }
@@ -97,7 +105,7 @@ body
     text-align: left
 .title-container
   display: flex
-  border: 1px solid #d4d4d4
+
   border-radius: 8px 8px 0 0
   overflow: hidden
 .title-item
@@ -106,12 +114,37 @@ body
   width: 50%
   text-align: center
   transition: background .4s ease
+  background-color: #ccdeea
+  cursor: pointer
   &:first-child
     border-right: 0
   &.active
+    cursor: inherit
     transition: background .2s ease
-    background: #cef9ce
+    background: white
 .form
   padding: 16px
+  background-color: white
+.form-container
+  max-width: 450px
+  margin: 20px auto
+  &__error
+    padding-top: 20px
+    color: red
+.button
+  margin: 40px auto 10px auto
+  min-width: 100%
+  background: #ccdeea
+  border: none
+
+@media screen and (min-width: 768px)
+  .form-container
+    margin-top: 40px
+@media screen and (min-width: 1280px)
+  .form-container
+    max-width: 650px
+    margin: 70px auto
+  .button
+    min-width: 100%
 
 </style>

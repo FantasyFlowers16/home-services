@@ -1,7 +1,10 @@
 <template>
   <div class="b-room">
-    <router-link to="/" class="back" >Назад</router-link>
-    <div class="b-room__title">Продаются</div>
+    <transition name="modal-fade">
+      <loader v-if="this.loader" ></loader>
+    </transition>
+<!--    <router-link to="/" class="back" >Назад</router-link>-->
+    <h1 class="b-room__title">Продаются</h1>
     <div class="b-room-item-container">
       <div class="b-room-item" v-for="item in this.rooms" :key="item.id">
         <item-room :data="item"></item-room>
@@ -13,10 +16,11 @@
 
 <script>
 import itemRoom from "../components/itemRoom";
+import Loader from "@/components/loader";
 export default {
   name: "FreeRoom",
   components:{
-    itemRoom
+    itemRoom,Loader
   },
   data(){
     return{
@@ -30,7 +34,7 @@ export default {
           photo:'',
           price:'3 400 000',
           metr:'88 000',
-          img:'@/assets/rooms/photo.jpg'
+          img:'../img/photo.2e93fc17.jpg'
         },
         {
           id:2,
@@ -41,10 +45,10 @@ export default {
           photo:'',
           price:'2 240 000',
           metr:'78 000',
-          img:'@/assets/rooms/photo.jpg'
+          img:'../img/photo2.jpg'
         },
         {
-          id:2,
+          id:3,
           title:'3-x комнатная квартира',
           description:'Продам одинокой грустной девушке славянской внешности.',
           address:'г. Томск, пер. Карпатова 23, 11',
@@ -52,10 +56,10 @@ export default {
           photo:'',
           price:'3 000 000',
           metr:'57 000',
-          img:'@/assets/rooms/photo.jpg'
+          img:'../img/photo3.jpg'
         },
         {
-          id:2,
+          id:4,
           title:'1-комнатная квартира',
           description:'Квартира для студетов',
           address:'г. Томск, пер. Нечаевский 5, 31. Есть мебльный гарнитур,свежий косметический ремонт',
@@ -63,9 +67,9 @@ export default {
           photo:'',
           price:'1 240 000',
           metr:'67 000',
-          img:'@/assets/rooms/photo.jpg'
+          img:'../img/photo4.jpg'
         },  {
-          id:2,
+          id:5,
           title:'2-x комнатная квартира',
           description:'Квартира для небольшой семьию Мебель остаетсяю',
           address:'г. Томск, пер. Нечаевский 5, 31',
@@ -73,9 +77,9 @@ export default {
           photo:'',
           price:'2 240 000',
           metr:'78 000',
-          img:'@/assets/rooms/photo.jpg'
+          img:'../img/photo5.jpg'
         },  {
-          id:2,
+          id:6,
           title:'2-x комнатная квартира',
           description:'Квартира для небольшой семьию Мебель остаетсяю',
           address:'г. Томск, пер. Нечаевский 5, 31',
@@ -83,10 +87,10 @@ export default {
           photo:'',
           price:'2 240 000',
           metr:'78 000',
-          img:'@/assets/rooms/photo.jpg'
+          img:'../img/photo6.jpg'
         },
         {
-          id:2,
+          id:7,
           title:'2-x комнатная квартира',
           description:'Квартира для небольшой семьию Мебель остаетсяю',
           address:'г. Томск, пер. Нечаевский 5, 31',
@@ -94,9 +98,9 @@ export default {
           photo:'',
           price:'2 240 000',
           metr:'78 000',
-          img:'@/assets/rooms/photo.jpg'
+          img:'../img/photo7.jpg'
         },  {
-          id:2,
+          id:8,
           title:'2-x комнатная квартира',
           description:'Квартира для небольшой семьию Мебель остаетсяю',
           address:'г. Томск, пер. Нечаевский 5, 31',
@@ -104,23 +108,38 @@ export default {
           photo:'',
           price:'2 240 000',
           metr:'78 000',
-          img:'@/assets/rooms/photo.jpg'
+          img:'../img/photo8.jpg'
         }
-      ]
+      ],
+      loader:true,
     }
-  }
+  },
+  methods:{
+    closeLoader(){
+      this.loader=false
+    }
+  },
+  mounted () {
+    this.loader = setInterval(this.closeLoader, 1500)
+
+  },
 }
 </script>
 
 <style lang="sass">
+@import '../assets/styles/mixin'
+body
+  +loader
 .b-room
   margin: 16px
   &__title
-    font-size: 23px
+    margin-top: 20px
+
     font-weight: bold
 .b-room-item
   margin-top: 20px
-
+.room-container
+  background: white
 @media screen and (min-width: 768px)
   .b-room-item-container
     display: flex
@@ -143,6 +162,11 @@ export default {
   .b-room-item
     padding: 20px
     width: 33%
-
-
+@media screen and (min-width: 1440px)
+  .b-room-item
+    width: 25%
+  .b-room
+    &__title
+      margin: 0 auto
+      max-width: 1920px
 </style>
