@@ -4,7 +4,7 @@
     <loader v-if="this.loader" ></loader>
   </transition>
 <!--  <router-link to="/" class="back">Назад</router-link>-->
-  <div>
+  <div v-if="!this.loader">
     <h1 class="b-ads__title">Объявления</h1>
     <div class="b-ads__item-container">
       <div class="b-ads__item" :class="{warn:item.isWarn}" v-for="item in this.adsList" :key="item.id">
@@ -165,7 +165,8 @@ body
 
 @media screen and (min-width: 1440px)
   .b-ads
-    margin: 6px 80px 0 80px
+    max-width: 1920px
+    margin: 0 auto
     &__item
       width: calc(33% - 28px)
       margin-right: 32px

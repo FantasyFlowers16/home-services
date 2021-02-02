@@ -146,5 +146,7 @@ body
     margin: 70px auto
   .button
     min-width: 100%
-
+  .b-counter
+    max-width: 1920px
+    margin: 0 auto
 </style>

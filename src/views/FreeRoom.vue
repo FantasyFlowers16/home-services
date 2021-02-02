@@ -5,7 +5,7 @@
     </transition>
 <!--    <router-link to="/" class="back" >Назад</router-link>-->
     <h1 class="b-room__title">Продаются</h1>
-    <div class="b-room-item-container">
+    <div v-if="!this.loader" class="b-room-item-container">
       <div class="b-room-item" v-for="item in this.rooms" :key="item.id">
         <item-room :data="item"></item-room>
       </div>

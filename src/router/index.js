@@ -5,8 +5,8 @@ import Room from '../views/FreeRoom.vue'
 import Photo from '../views/PhotoPage.vue'
 import Chat from '../views/Chat.vue'
 import Layout from '../layout/MainLayout'
-// import EmptyLayout from '../layout/EmptyLayout'
 import ADS from '../views/ads'
+import About from '../views/About'
 import Counter from "@/views/Counter";
 
 
@@ -21,6 +21,7 @@ const routes = [
       {path: '/photo', name: 'Photo', component:Photo},
       {path: '/chat', name: 'Chat', component:Chat},
       {path: '/counter', name: 'Counter', component:Counter},
+      {path: '/about', name: 'About', component:About},
       {path: '/', name: 'Home', component: Home}
          ]
   }
@@ -33,7 +34,9 @@ const routes = [
 ];
 
 const router = new VueRouter({
-  routes
+  mode: 'history',
+  routes,
+
 });
 
 export default router;

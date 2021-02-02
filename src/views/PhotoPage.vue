@@ -1,12 +1,12 @@
 <template>
-    <div>
+    <div class="b-photo">
       <transition name="modal-fade">
         <loader v-if="this.loader" ></loader>
       </transition>
 <!--      <router-link to="/" class="back" >Назад</router-link>-->
       <h1 class="b-photo__title">Photo:</h1>
 
-      <div v-if="!closeOpenSlider" class="b-photo-container">
+      <div v-if="!closeOpenSlider && !this.loader " class="b-photo-container">
         <div v-for="item in this.photoList" :key="item.id" class="b-photo-container">
           <photo-item v-if="!closeOpenSlider"  :photo="item" @clickItem="openSlider()"></photo-item>
         </div>
@@ -186,4 +186,8 @@ body
     pointer-events: inherit
   .slide
     width: 400px
+
+  .b-photo
+    max-width: 1920px
+    margin: 0 auto
 </style>

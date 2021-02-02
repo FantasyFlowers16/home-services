@@ -7,7 +7,7 @@
 <!--      <router-link to="/" class="back" >Назад</router-link>-->
 
       <h1 class="news">News</h1>
-      <div class="news__container">
+      <div v-if="!this.loader" class="news__container">
         <div class="news" @click="showModal(item)" v-for="item in this.news" :key="item.id">
         <news-item
             :data="item"

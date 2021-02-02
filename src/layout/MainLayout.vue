@@ -12,6 +12,8 @@
               <router-link to="/ads" > <li class="left-menu__item" @click="closeMenu">Объявления</li></router-link>
               <router-link to="/room" > <li class="left-menu__item" @click="closeMenu">Квартиры в продаже</li></router-link>
               <router-link to="/counter" > <li class="left-menu__item" @click="closeMenu">Показания счетчиков</li></router-link>
+              <router-link to="/about" > <li class="left-menu__item" @click="closeMenu">О нас</li></router-link>
+
             </ul>
           </div>
 
@@ -25,12 +27,13 @@
             <router-link to="/ads" ><div class="desktop-menu__item">Объявления</div></router-link>
             <router-link to="/room" ><div class="desktop-menu__item">Квартиры в продаже</div></router-link>
             <router-link to="/counter" ><div class="desktop-menu__item">Показания счетчиков</div></router-link>
+            <router-link to="/about" ><div class="desktop-menu__item">О нас</div></router-link>
           </div>
         </div>
       </div>
 
     </header>
-    <router-view />
+    <router-view v-if="!this.loader"></router-view>
     <transition name="modal-fade">
       <loader v-if="this.loader" ></loader>
     </transition>

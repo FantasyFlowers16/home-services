@@ -54,10 +54,8 @@ export default {
 .main-background
   opacity: 0.85
   background-size: cover
-
   //background: url('../assets/news.jpg') no-repeat 55% 20%
   min-width: 320px
-  width: 100%
   position: absolute
   height: 100%
 .menu
