@@ -1,8 +1,8 @@
 <template>
   <div class="news-item">
 
-    <div class="news-item__title">{{data.newsTitle}}</div>
-    <div class="news-item__text">{{data.newsText}}</div>
+    <div class="news-item__title">{{data.title}}</div>
+    <div class="news-item__text">{{data.text}}</div>
 
   </div>
 

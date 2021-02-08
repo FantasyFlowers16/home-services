@@ -7,7 +7,7 @@
   <div v-if="!this.loader">
     <h1 class="b-ads__title">Объявления</h1>
     <div class="b-ads__item-container">
-      <div class="b-ads__item" :class="{warn:item.isWarn}" v-for="item in this.adsList" :key="item.id">
+      <div class="b-ads__item" :class="{warn: item.isWarn}" v-for="item in this.adsLists" :key="item.id">
         <div class="b-ads__title">{{item.title}}</div>
         <div class="b-ads__text">{{item.text}}</div>
       </div>
@@ -20,11 +20,14 @@
 
 <script>
 import Loader from "@/components/loader";
+import db from "@/components/firebaseinit";
+
 export default {
   name: "ads",
   components: {Loader},
   data(){
     return{
+      adsLists:[],
       adsList:[
         {
           id:'1',
@@ -51,7 +54,7 @@ export default {
           id:'4',
           title:'Потерян поспорт',
           text:'12.05 был потерян паспорт на имя Иванова Ивана Ивановича' +
-              'Кто располагает како-то информацией просьба звонить по номеру 8-267-334-59-21',
+              'Кто располагает какой-то информацией просьба звонить по номеру 8-267-334-59-21',
           isWarn:false
         },
         {
@@ -114,6 +117,27 @@ export default {
   },
   mounted () {
     this.loader = setInterval(this.closeLoader, 1500)
+
+  },
+  created() {
+    db.collection('ads').get().then
+    (querySnapshot=>{
+      querySnapshot.forEach(doc=>{
+
+        console.log(doc.data().adsList)
+        doc.data().adsList.forEach(item=>{
+
+        // eslint-disable-next-line no-unused-vars
+        const data={
+          id:item.id,
+          title:item.title,
+          text:item.text,
+          isWarn:item.isWarn
+        }
+        this.adsLists.push(data)
+        })
+      })
+    })
 
   },
 }

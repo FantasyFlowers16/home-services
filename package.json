@@ -10,13 +10,15 @@
   "dependencies": {
     "@splidejs/vue-splide": "^0.3.5",
     "core-js": "^3.6.5",
+    "firebase": "^8.2.6",
     "swiper": "^6.4.5",
     "vue": "^2.6.11",
     "vue-awesome-swiper": "^4.1.1",
     "vue-preloaders": "^2.0.0",
     "vue-router": "^3.2.0",
     "vue-swiper": "^0.5.0",
-    "vue-ui-preloader": "^1.1.3"
+    "vue-ui-preloader": "^1.1.3",
+    "vuex": "^3.6.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -52,5 +54,17 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "description": "```\r npm install\r ```",
+  "main": "babel.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FantasyFlowers16/home-services.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FantasyFlowers16/home-services/issues"
+  },
+  "homepage": "https://github.com/FantasyFlowers16/home-services#readme"
 }

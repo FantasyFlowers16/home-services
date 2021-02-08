@@ -8,7 +8,7 @@
 
       <h1 class="news">News</h1>
       <div v-if="!this.loader" class="news__container">
-        <div class="news" @click="showModal(item)" v-for="item in this.news" :key="item.id">
+        <div class="news" @click="showModal(item)" v-for="item in this.newsList" :key="item.id">
         <news-item
             :data="item"
         ></news-item>
@@ -23,6 +23,7 @@
 import NewsItem from "../components/newsItem";
 import PageNewsOnly from "../components/modalPage";
 import Loader from "@/components/loader";
+import db from "@/components/firebaseinit";
 
 export default {
   components: {
@@ -33,6 +34,7 @@ export default {
       loader:true,
       onlyNews: [],
       isModalVisible: false,
+      newsList:[],
       news: [
         {
           id:1,
@@ -123,6 +125,24 @@ export default {
     closeLoader(){
       this.loader=false
     },
+
+  },
+  created() {
+    db.collection('news').get().then
+    (querySnapshot=>{
+      querySnapshot.forEach(doc=>{
+        doc.data().news.forEach(item=>{
+          console.log(item)
+          // eslint-disable-next-line no-unused-vars
+          const data={
+            id:item.id,
+            title:item.title,
+            text:item.text,
+          }
+          this.newsList.push(data)
+        })
+      })
+    })
 
   },
   mounted () {

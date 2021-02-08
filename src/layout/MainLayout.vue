@@ -47,6 +47,8 @@
 
 <script>
 import Loader from "@/components/loader";
+// eslint-disable-next-line no-unused-vars
+
 export default {
   name: "MainLayout",
   components: {
@@ -54,10 +56,12 @@ export default {
   },
   data () {
     return {
+      data:[],
       loader:true,
       menuOpen:false
     }
   },
+
   methods:{
     closeLoader(){
       this.loader=false

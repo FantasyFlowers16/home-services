@@ -5,7 +5,7 @@
 
         <header class="modal-header">
           <slot name="header">
-          {{news.newsTitle}}
+          {{news.title}}
             <button
                 type="button"
                 class="btn-close"
@@ -17,7 +17,7 @@
         </header>
         <section class="modal-body">
           <slot name="body">
-            {{news.newsText}}
+            {{news.text}}
           </slot>
         </section>
       </div>
