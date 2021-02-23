@@ -7,6 +7,7 @@ import Chat from '../views/Chat.vue'
 import Layout from '../layout/MainLayout'
 import ADS from '../views/ads'
 import About from '../views/About'
+import Admin from '../views/Admin'
 import Counter from "@/views/Counter";
 
 
@@ -22,6 +23,7 @@ const routes = [
       {path: '/chat', name: 'Chat', component:Chat},
       {path: '/counter', name: 'Counter', component:Counter},
       {path: '/about', name: 'About', component:About},
+      {path: '/admin', name: 'Admin', component: Admin},
       {path: '/', name: 'Home', component: Home}
          ]
   }

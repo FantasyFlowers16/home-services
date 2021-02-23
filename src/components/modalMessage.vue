@@ -35,7 +35,7 @@ export default {
 
 <style lang="sass"  scoped>
 .modal-backdrop
-  z-index: 11
+  z-index: 11111
   position: fixed
   top: 0
   bottom: 0
