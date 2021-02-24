@@ -202,7 +202,7 @@ export default {
           id:this.countAds+1,
           title:this.title,
           text:this.text,
-          warn:false,
+          isWarn:false,
           moderate:false
         }
         return washingtonRef.update({
