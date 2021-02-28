@@ -7,6 +7,7 @@ import Chat from '../views/Chat.vue'
 import Layout from '../layout/MainLayout'
 import ADS from '../views/ads'
 import About from '../views/About'
+import News from '../views/News'
 import Admin from '../views/Admin'
 import Counter from "@/views/Counter";
 
@@ -17,7 +18,7 @@ const routes = [
   {path: "", name: "Layout", component: Layout,
     children: [
       {path: '/ads', name: 'ADS', component: ADS},
-      {path: '/news', name: 'News', component: () => import(/* webpackChunkName: "about" */ '../views/News.vue')},
+      {path: '/news', name: 'News', component: News},
       {path: '/room', name: 'Room', component: Room},
       {path: '/photo', name: 'Photo', component:Photo},
       {path: '/chat', name: 'Chat', component:Chat},
@@ -27,12 +28,6 @@ const routes = [
       {path: '/', name: 'Home', component: Home}
          ]
   }
-  // {path: "", name: "EmptyLayout", component: EmptyLayout,
-  //   children: [
-  //     {path: '', name: 'Home', component: Home}
-  //   ]
-  // },
-
 ];
 
 const router = new VueRouter({

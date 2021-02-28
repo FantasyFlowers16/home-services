@@ -18,8 +18,8 @@
 </template>
 
 <script>
-import PhotoItem from "../components/itemPhoto";
-import ModalSlider from "@/components/modalSlider";
+import PhotoItem from "../components/item-photo";
+import ModalSlider from "@/components/modal-slider";
 import Loader from "@/components/loader";
 
 export default {

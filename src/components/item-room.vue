@@ -1,5 +1,5 @@
 <template>
-  <div class="room-container">
+  <div class="room-container" v-if="this.data.moderate" >
     <div class="room-item">
       <div class="room-item__title">{{this.data.title}}</div>
       <div class="room-item__address">{{this.data.address}}</div>
@@ -16,7 +16,8 @@
 
 <script>
 export default {
-  props: ['data']
+  props: ['data'],
+
 }
 </script>
 

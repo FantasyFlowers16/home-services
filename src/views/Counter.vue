@@ -16,12 +16,13 @@
       </div>
       <form  class="form" v-on:submit.prevent>
         <input class="input" name="fio" v-model="fio"><label for="fio" class="label">ФИО</label>
+        <input class="input" name="street" v-model="street"><label for="street" class="label">Улица/проспет</label>
         <input class="input" name="house" v-model="house"><label for="house" class="label">Дом</label>
         <input class="input" name="room" v-model="room"><label for="room" class="label">Квартира</label>
         <input v-if="this.waterHot" class="input" name="data" v-model="dataHot"> <label v-if="this.waterHot"  for="data" class="label">Ваши показания счетчиков горячей воды</label>
         <input v-if="this.waterCold" class="input" name="data" v-model="dataCold"> <label v-if="this.waterCold" for="data" class="label">Ваши показания счетчиков хол. воды</label>
         <div v-if="validForm" class="form-container__error">Заполните все поля</div>
-        <button class="button" @click="OpenModal()" v-on:submit.prevent>Отправить</button>
+        <button class="button" @click="sendDataCounter()" v-on:submit.prevent>Отправить</button>
 
       </form>
 
@@ -32,7 +33,9 @@
 <script>
 
 import Loader from "@/components/loader";
-import ModalMessage from "@/components/modalMessage";
+import ModalMessage from "@/components/modal-message";
+import db from "@/firebaseinit";
+import firebase from "firebase";
 
 export default {
   name: "Counter",
@@ -48,10 +51,12 @@ export default {
       room:'',
       dataHot:'',
       dataCold:'',
+      street:'',
       waterHot: true,
       waterCold:false,
       isModalVisible: false,
-      validForm:false
+      validForm:false,
+      countCounter:0
     }
   },
   methods:{
@@ -69,10 +74,41 @@ export default {
     closeModal() {
       this.isModalVisible = false;
     },
+    sendDataCounter(){
+      let ListCounter = db.collection("counter").doc("4ZwmsUtEeIjQ5YIbvUYJ");
+      console.log(ListCounter)
+      let  newCounter = {
+        id:this.countCounter,
+        fio:this.fio,
+        street:this.street,
+        house:this.house,
+        room:this.room,
+        dataHot:this.dataHot,
+        dataCold:this.dataCold
+      }
+      return ListCounter.update({
+        counterList: firebase.firestore.FieldValue.arrayUnion(newCounter)
+
+      })
+          .then(() => {
+            //Modall Succsess
+            this.OpenModal()
+            ListCounter.update({
+              CountId: firebase.firestore.FieldValue.increment(1)
+            });
+
+          })
+          .catch((error) => {
+            // The document probably doesn't exist.
+            console.error("Error updating document: ", error);
+          });
+    },
     OpenModal(){
-      if(this.fio.length>0&&this.house.length>0&&this.room.length>0){
+      console.log("hi")
+      if(this.fio.length>0&&this.house.length>0&&this.room.length>0&&this.street.length>0){
         this.isModalVisible=true
         this.fio=''
+        this.street=''
         this.house=''
         this.room=''
         this.validForm=false
@@ -80,7 +116,19 @@ export default {
         this.validForm=true
       }
 
+    },
+    getCountId(){
+      db.collection('counter').get().then
+      (querySnapshot=>{
+        querySnapshot.forEach(doc=>{
+          this.countCounter = doc.data().CountId
+        })
+      })
     }
+  },
+
+  created() {
+    this.getCountId()
   },
   mounted () {
     this.loader = setInterval(this.closeLoader, 1500)

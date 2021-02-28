@@ -30,6 +30,7 @@ export default {
   max-height: 195px
   overflow: hidden
   line-height: 23px
+  position: relative
   &:hover
     opacity: 1
     background-color: #89b3d4
@@ -47,6 +48,17 @@ export default {
     -moz-line-clamp: 3
     -webkit-line-clamp: 3
     -webkit-box-orient: vertical
+  &__delete
+    display: block
+    position: absolute
+    top: 12px
+    right: 20px
+    padding: 5px
+    border-radius: 10px
+    background: #a72222
+    color: white
+    cursor: pointer
+    box-shadow: 3px 3px 2px 0 rgb(0 0 0 / 35%)
 @media screen and (min-width: 768px)
   .news-item
     max-height: 216px

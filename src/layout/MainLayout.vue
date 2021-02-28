@@ -29,6 +29,7 @@
             <router-link to="/counter" ><div class="desktop-menu__item">Показания счетчиков</div></router-link>
             <router-link to="/about" ><div class="desktop-menu__item">О нас</div></router-link>
           </div>
+
         </div>
       </div>
 
@@ -139,7 +140,13 @@ body
     text-decoration: none
     color: black
 
-
+.hide-admin
+  position: absolute
+  display: block
+  width: 20px
+  height: 20px
+  right: 0px
+  top: 0px
 .b-header
   &__menu
     position: absolute
@@ -173,7 +180,7 @@ body
   &__item
     color: #012d5f
     cursor: pointer
-    padding: 15px 20px
+    padding: 15px 10px
     font-weight: bold
     transition: background-color .4s ease,color .4s ease
     &:hover

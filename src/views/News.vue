@@ -20,10 +20,10 @@
 </template>
 
 <script>
-import NewsItem from "../components/newsItem";
-import PageNewsOnly from "../components/modalPage";
+import NewsItem from "../components/news-item";
+import PageNewsOnly from "../components/modal-page";
 import Loader from "@/components/loader";
-import db from "@/components/firebaseinit";
+import db from "@/firebaseinit";
 
 export default {
   components: {

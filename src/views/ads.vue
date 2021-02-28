@@ -1,9 +1,9 @@
 <template>
-<div class="b-ads">
-
-  <transition name="modal-fade">
-    <loader v-if="this.loader" ></loader>
-  </transition>
+  <div>
+    <transition name="modal-fade">
+      <loader v-if="this.loader" ></loader>
+    </transition>
+    <div class="b-ads">
   <transition name="modal-fade">
     <modal-message v-if="isModalVisible"  @close="closeModal"></modal-message>
   </transition>
@@ -12,26 +12,21 @@
       <transition name="modal-fade">
         <div class="modal-ads-backdrop">
           <div class="modal-ads">
-
-            <header class="modal-ads-header">
-              <slot name="header">
-                <button
-                    type="button"
-                    class="modal-ads-btn-close"
-                    @click="close"
-                >
-                  x
-                </button>
-              </slot>
-            </header>
             <section class="modal-body">
+              <button
+                  type="button"
+                  class="modal-ads-btn-close"
+                  @click="close"
+              >
+                x
+              </button>
               <slot name="body">
                 <form  class="form" v-on:submit.prevent>
                   <input class="input" name="fio" v-model="fio"><label for="fio" class="label">ФИО</label>
                   <input class="input" name="house" v-model="title"><label for="title" class="label">Заголовок объявления</label>
                   <input class="input" name="room" v-model="text"><label for="text" class="label">Полный текст объявления</label>
                   <div v-if="validForm" class="form-container__error">Заполните все поля</div>
-                  <button class="button" @click="sendDataAds()" v-on:submit.prevent>Отправить</button>
+                  <button class="button" @click="OpenModal()" v-on:submit.prevent>Отправить</button>
                 </form>
               </slot>
             </section>
@@ -39,12 +34,12 @@
         </div>
       </transition>
     </div>
-
-<!--  <router-link to="/" class="back">Назад</router-link>-->
   <div v-if="!this.loader">
 
     <h1 class="b-ads__title">Объявления</h1>
-    <button class="b-ads__add " @click="openAddForm">Добавить свое объявление</button>
+    <button class="b-ads__add desktop " @click="openAddForm">Добавить свое объявление</button>
+    <button class="b-ads__add mobile" @click="openAddForm">+</button>
+
     <div class="b-ads__wrapper">
       <div class="b-ads__item-container" v-for="item in this.adsLists" :key="item.id">
         <div class="b-ads__item" :class="{warn: item.isWarn}" v-if="item.moderate" >
@@ -56,16 +51,18 @@
   </div>
 
 </div>
+  </div>
+
 </template>
 
 <script>
 import Loader from "@/components/loader";
-import db from "@/components/firebaseinit";
-import ModalMessage from "@/components/modalMessage";
+import db from "@/firebaseinit";
+import ModalMessage from "@/components/modal-message";
 import firebase from "firebase";
 
 export default {
-  name: "ads",
+  name: "ads-admin",
   components: {Loader,ModalMessage},
 
   data(){
@@ -75,7 +72,7 @@ export default {
       title: '',
       text :'',
       fio:'',
-      adsList:[
+      adsListTest:[
         {
           id:'1',
           title:'Пропала собака!',
@@ -186,6 +183,7 @@ export default {
     },
     OpenModal(){
       if(this.fio.length>0&&this.text.length>0&&this.title.length>0){
+        this.sendDataAds()
         this.isModalVisible=true
         this.addForm=false
         this.fio=''
@@ -194,29 +192,65 @@ export default {
         this.validForm=false
       }else{
         this.validForm=true
+
       }
     },
     sendDataAds(){
-        var washingtonRef = db.collection("ads").doc("olH7NHHUrWOJP35mk88b");
-        var  newAds = {
-          id:this.countAds+1,
+        let ListAds = db.collection("ads").doc("olH7NHHUrWOJP35mk88b");
+        let newCountId=this.countAds+1
+        let  newAds = {
+          id:newCountId,
           title:this.title,
           text:this.text,
           isWarn:false,
           moderate:false
         }
-        return washingtonRef.update({
+      return ListAds.update({
           adsList: firebase.firestore.FieldValue.arrayUnion(newAds)
 
         })
             .then(() => {
-              console.log("Document successfully updated!");
-              this.OpenModal()
+              //Modall Succsess
+              ListAds.update({
+                CountId: firebase.firestore.FieldValue.increment(1)
+              });
+
+
             })
             .catch((error) => {
               // The document probably doesn't exist.
               console.error("Error updating document: ", error);
             });
+    },
+    getDataAds(){
+
+      db.collection('ads').get().then
+      (querySnapshot=>{
+        querySnapshot.forEach(doc=>{
+
+          doc.data().adsList.forEach(item=>{
+            this.countAds+=1
+            const data={
+              id:item.id,
+              title:item.title,
+              text:item.text,
+              isWarn:item.isWarn,
+              moderate:item.moderate
+            }
+            this.adsLists.push(data)
+          })
+        })
+      })
+    },
+    getCountId(){
+      db.collection('ads').get().then
+      (querySnapshot=>{
+        querySnapshot.forEach(doc=>{
+
+          this.countAds = doc.data().CountId
+
+        })
+      })
     }
   },
   mounted () {
@@ -224,26 +258,8 @@ export default {
 
   },
   created() {
-    db.collection('ads').get().then
-    (querySnapshot=>{
-      querySnapshot.forEach(doc=>{
-
-        console.log(doc.data().adsList)
-        doc.data().adsList.forEach(item=>{
-          this.countAds+=1
-        // eslint-disable-next-line no-unused-vars
-          const data={
-            id:item.id,
-            title:item.title,
-            text:item.text,
-            isWarn:item.isWarn,
-            moderate:item.moderate
-          }
-          this.adsLists.push(data)
-        })
-      })
-    })
-
+    this.getDataAds()
+    this.getCountId()
   },
 }
 
@@ -260,7 +276,7 @@ body
     display: flex
     flex-wrap: wrap
   &__item-container
-      margin-left: 30px
+      //margin-left: 30px
   &__title
     margin-top: 20px
     font-weight: bold
@@ -275,6 +291,14 @@ body
     box-shadow: 2px 2px 5px #808080
     padding: 10px 20px
     border-radius: 10px
+    &.mobile
+      font-size: 20px
+      font-weight: bold
+      right: 10px
+      top: 30px
+      padding: 4px 12px
+    &.desktop
+      display: none
     &:hover
       background: #275975
       color: white
@@ -306,7 +330,8 @@ body
 .modal-ads
   opacity: 1
   margin: 100px auto
-  width: 70%
+  width: 100%
+
   &-backdrop
     position: fixed
     top: 0
@@ -317,6 +342,9 @@ body
     background-color: #9d9999
     opacity: 0.95
   &-btn-close
+    position: absolute
+    right: 18px
+    background: white
     border: none
     color: green
     border-radius: 10px
@@ -335,20 +363,21 @@ body
       width: calc(50% - 16px)
       &:nth-child(2n)
         margin-left: 32px
-    //&__item
-      //width: calc(50% - 16px)
-      //&:nth-child(2n)
-      //  margin-left: 32px
-
+    &__add
+      position: absolute
+      display: block
+      top: 20px
+      right: 30px
+      &.mobile
+        display: none
+      &.desktop
+        display: block
+  .modal-ads
+    width: 70%
+    max-width: 768px
 @media screen and (min-width: 1440px)
   .b-ads
     max-width: 1920px
     margin: 0 auto
-    //&__item
-    //  width: calc(33% - 28px)
-    //  margin-right: 32px
-    //  &:nth-child(2n)
-    //    margin-left: 0
-    //  &:nth-child(3n)
-    //    margin-left: 0
+
 </style>
