@@ -93,7 +93,7 @@ export default {
     openSlider(){
       this.modalVisible=true
       this.loader=true
-      this.openLoader(1500)
+      this.openLoader(3000)
 
     },
     showModal() {

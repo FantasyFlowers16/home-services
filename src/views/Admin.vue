@@ -2,7 +2,7 @@
   <div class="b-admin__wrapper">
     <div v-if="auth">
       <form class="b-auth-container" @submit.prevent="LoginAdmin">
-        <label>Логин</label>
+        <h3>Авторизация</h3>
         <input class="input" name="login" type="email" v-model.trim="email"><label for="login" class="label">Логин</label>
         <input class="input" type="password" name="password" v-model="password"><label for="password" class="label">Пароль</label>
 
@@ -12,7 +12,7 @@
     <div v-else>
       <div class="b-admin__container">
         <div class=" b-admin__menu">
-          <div class=" b-admin__menu-item " :class="{open:this.menuAds}" @click="menuAds=true;menuRooms=false;menuCounter=false; menuNews=false">Объявления</div>
+          <div :data="this.adsListItem" class=" b-admin__menu-item " :class="{open:this.menuAds}" @click="menuAds=true;menuRooms=false;menuCounter=false; menuNews=false">Объявления</div>
           <div class=" b-admin__menu-item"  :class="{open:this.menuRooms}" @click="menuAds=false;menuRooms=true;menuCounter=false; menuNews=false">Квартиры в продаже</div>
           <div class=" b-admin__menu-item"  :class="{open:this.menuCounter}" @click="menuAds=false;menuRooms=false;menuCounter=true; menuNews=false">Данные счетчиков</div>
           <div class=" b-admin__menu-item"  :class="{open:this.menuNews}" @click="menuAds=false;menuRooms=false;menuCounter=false;menuNews=true">Новости</div>
@@ -37,6 +37,7 @@ import rooms from "../components/rooms-admin"
 import counter from "../components/counter-admin"
 import news from "../components/news-admin"
 
+
 export default {
   components: {
     ads,rooms, counter,news
@@ -47,10 +48,11 @@ export default {
       menuRooms:false,
       menuCounter:false,
       menuNews:false,
-      auth: false,
+      auth: true,
       email:'',
       password:'',
-      adsLists:[]
+      adsLists:[],
+      adsListItem:[],
     };
   },
   name: "admin",
@@ -63,10 +65,15 @@ export default {
       try{
         await this.$store.dispatch('login', FormData)
         this.auth=false
+        console.log("notfail")
       }
-      catch (e){ console.log("fail")}
-    }
+      catch (e){
+        console.log("fail")
+        this.auth=true
+      }
+    },
   },
+
 
 };
 </script>
@@ -160,4 +167,8 @@ export default {
       display: block!important
       &.mobile
         display: none!important
+  .b-auth
+    &-container
+      max-width: 500px
+      margin: 100px auto
 </style>

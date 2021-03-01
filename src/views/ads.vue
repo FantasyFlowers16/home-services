@@ -359,6 +359,8 @@ body
     border-top-right-radius: calc(0.3rem - 1px)
 @media screen and (min-width: 768px)
   .b-ads
+    &__item
+      height: 100%
     &__item-container
       width: calc(50% - 16px)
       &:nth-child(2n)
@@ -377,7 +379,15 @@ body
     max-width: 768px
 @media screen and (min-width: 1440px)
   .b-ads
+    padding: 0 40px
     max-width: 1920px
     margin: 0 auto
+    &__item-container
+      margin-right: 20px
+      width: calc(25% - 15px)
+      &:nth-child(2n)
+        margin-left: 0px
+      &:nth-child(4n)
+        margin-right: 0
 
 </style>

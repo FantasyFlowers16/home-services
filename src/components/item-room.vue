@@ -35,7 +35,7 @@ export default {
   &__address
     font-size: 12px
     line-height: 12px
-    color: gray
+    color: #696464
     padding-bottom: 8px
   &__photo-container
     border-radius: 6px
@@ -58,7 +58,7 @@ export default {
     font-weight: bold
     font-size: 16px
   &__price-metr
-    color: lightgrey
+    color: #696464
     font-size: 14px
   &__description
     font-size: 14px

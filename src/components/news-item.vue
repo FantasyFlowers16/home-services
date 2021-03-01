@@ -65,8 +65,8 @@ export default {
     overflow: hidden
     line-height: 28px
     &__title
-      font-size: 24px
+      font-size: 22px
     &__text
-      font-size: 18px
+      font-size: 15px
 
 </style>

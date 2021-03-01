@@ -41,7 +41,7 @@ export default {
       openModal:false
     };
   },
-  name: "admin",
+  name: "ads-admin",
   methods:{
     deleteAds(id,title,text,warn,moderate){
       let adsListItem = db.collection("ads").doc("olH7NHHUrWOJP35mk88b");
