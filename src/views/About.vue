@@ -2,20 +2,17 @@
   <div class="b-about">
     <h1 class="b-about__title">О нас</h1>
     <div class="b-about-container">
-      <div class="b-about__text">Website.com began in 2005. After years in the web hosting industry, we realized that it
-        was near impossible for the average Jane or Joe to create their own website. Traditional web hosting services were
-        simply too complicated, time consuming, and expensive to manage.
+      <div class="b-about__text">
+        Основанная в 1992 году, сегодня компания Home Services является крупнейшим широкопрофильным дистрибьютором на российском рынке. Компания успешно развивает такие сегменты дистрибуции, как: компьютерная, цифровая и бытовая техника, канцелярские принадлежности, офисная мебель, подарки для бизнеса. Кроме этого, особое внимание уделяется развитию VAD дистрибуции – как оборудования, так и программного обеспечения.
 
-        We created the Website.com Site Builder with the user's perspective in mind. We wanted to offer a platform that
-        would require no coding skills or design experience. We keep it simple, so users can focus on creating an
-        amazing website that reflects their brand. Best of all - it's free. You can get online, showcase your brand,
-        or start selling products right away.
+        <br>Репутация надежного, ответственного и опытного партнера, всегда выполняющего свои обязательства, позволила компании MERLION построить прочные отношения с большинством ведущих мировых производителей – в портфеле компании MERLION свыше 920 брендов.
+        <img src="../assets/about.jpg" class="b-about__text-img">
+        Более 400 прямых дистрибьюторских соглашений. Партнерская сеть Home Services насчитывает более 8700 компаний во всех регионах России и странах СНГ. Офисы продаж находятся в Москве, Самаре, Санкт-Петербурге, Нижнем Новгороде, Екатеринбурге, Новосибирске, Ростове-на-Дону.
+        <br>Многолетний опыт, инновационные технологии, внимательность к трендам и забота о своих клиентах — слагаемые успеха, компании, который можно измерить в цифрах.
+         Home Services сегодня — это тысячи профессионалов, которые развивают национальный дистрибуторский рынок в нескольких сегментах и делают высокотехнологичные продукты доступными для каждого жителя России.
+        <br>Сотрудничая со знаковыми архитектурными бюро, ГК «Инград» строит жилые кварталы с помещениями для коммерческой инфраструктуры на первых этажах, подземными паркингами и линейными парковками, детскими садами, школами и приватными дворами. Каждый проект имеет свое лицо и имя, в каждом — уникальный подход к архитектуре, дизайну общественных зон, инженерным и планировочным решениям, благоустройству территории.
+      </div>
 
-        After seeing an increased need for ecommerce solutions, we developed one of the only fully-featured, free and
-        commission-free online store builders, allowing business owners to launch their online business.
-
-        Today, we're proud to empower individuals and small business owners around the world. Everyone deserves a
-        website, and we're excited to see what you create.</div>
     </div>
 
     <div class="b-about-container">
@@ -76,6 +73,12 @@
     overflow: hidden
     object-fit: cover
     border-radius: 30px
+  &__text-img
+    margin: 10px 0
+    width: 100%
+    height: 130px
+    object-fit: cover
+    border-radius: 5px
   &__status
     padding-top: 10px
     font-weight: bold
@@ -99,6 +102,12 @@
   margin-bottom: 30px
 @media screen and (min-width: 768px)
   .b-about
+    &__text-img
+      width: 300px
+      height: 150px
+      float: right
+      margin-left: 10px
+
     &__photo-container
       display: flex
       flex-wrap: wrap
@@ -107,8 +116,14 @@
       &:nth-child(2n)
         margin-left: 32px
 
-
-
+@media screen and (min-width: 1440px)
+  .b-about
+    &__text
+      font-size: 22px
+    &__text-img
+      width: 500px
+      height: 250px
+      margin-right: 20px
 @media screen and (min-width: 1440px)
   .b-about
     &__photo-item

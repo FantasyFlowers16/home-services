@@ -12,18 +12,15 @@
         <div class="modal-ads-backdrop">
           <div class="modal-ads">
 
-            <header class="modal-ads-header">
-              <slot name="header">
-                <button
-                    type="button"
-                    class="modal-ads-btn-close"
-                    @click="close"
-                >
-                  x
-                </button>
-              </slot>
-            </header>
+
             <section class="modal-body">
+              <button
+                  type="button"
+                  class="modal-ads-btn-close"
+                  @click="close"
+              >
+                x
+              </button>
               <slot name="body">
                 <form  class="form" v-on:submit.prevent>
                   <input class="input" name="fio" v-model="fio"><label for="fio" class="label">Ваша ФИО</label>
@@ -297,7 +294,7 @@ body
     box-shadow: 2px 2px 5px #808080
     padding: 10px 20px
     border-radius: 10px
-    border-radius: 10px
+    transition: background .3s ease,color .3s ease
     &.desktop
       display: none
     &.mobile
@@ -306,6 +303,10 @@ body
       right: 15px
       top: 80px
       padding: 4px 12px
+    &:hover
+      transition: background .2s ease,color .2s ease
+      background: #275975
+      color: white
 .b-room-item
   margin-top: 20px
 .room-container

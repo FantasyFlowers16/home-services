@@ -92,8 +92,6 @@ export default {
   methods:{
     openSlider(){
       this.modalVisible=true
-      this.loader=true
-      this.openLoader(3000)
 
     },
     showModal() {

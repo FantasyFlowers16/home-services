@@ -157,7 +157,7 @@ body
   border-radius: 8px 8px 0 0
   overflow: hidden
 .title-item
-  box-sizing: border-box
+  boxbox-sizing: border-box
   padding: 10px
   width: 50%
   text-align: center
@@ -184,6 +184,12 @@ body
   min-width: 100%
   background: #ccdeea
   border: none
+  transition: background 0.3s ease, color 0.3s ease
+  &:hover
+    transition: background 0.2s ease, color 0.2s ease
+    background: #275975
+    color: white
+
 
 @media screen and (min-width: 768px)
   .form-container

@@ -143,6 +143,7 @@ export default {
 
 
 .b-admin-item
+  padding-top: 20px
   max-width: 1280px
   margin: 0 auto
   display: flex
@@ -178,6 +179,10 @@ export default {
     background: #a72222
     border-radius: 5px
     color: white
+    transition: background .3s ease
+    &:hover
+      transition: background .2s ease
+      background: #cd3e3e
 
 .button
   box-sizing: border-box
@@ -187,9 +192,17 @@ export default {
     background: #4a924a
     min-width: 40%
     margin: 10px
+    transition: background .3s ease
+    &:hover
+      transition: background .2s ease
+      background: #33a533
   &.red
     color: white
     background: #a72222
     min-width: 40%
     margin: 10px
+    transition: background .3s ease
+    &:hover
+      transition: background .2s ease
+      background: #cd3e3e
 </style>

@@ -122,6 +122,8 @@ export default {
     background: #9dc5d6
     border-radius:   10px 10px 0 0
   &__menu-item
+    cursor: pointer
+    font-weight: 600
     padding: 10px
     color: #012d5f
     &:first-child

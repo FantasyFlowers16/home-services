@@ -148,6 +148,7 @@ export default {
 .b-admin
   &__news-add
     position: absolute
+    cursor: pointer
     padding: 10px
     border-radius: 10px
     text-align: right
@@ -155,7 +156,11 @@ export default {
     right: 10px
     color: white
     background: #4a924a
-      box-shadow: 3px 3px 2px 0 rgb(0 0 0 / 35%)
+    transition: background .3s ease
+    box-shadow: 3px 3px 2px 0 rgb(0 0 0 / 35%)
+    &:hover
+      background: #33a533
+
 
   &__news
     padding-top: 50px

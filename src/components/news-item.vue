@@ -58,7 +58,11 @@ export default {
     background: #a72222
     color: white
     cursor: pointer
+    transition: background .3s ease
     box-shadow: 3px 3px 2px 0 rgb(0 0 0 / 35%)
+    &:hover
+      transition: background .2s ease
+      background: #cd3e3e
 @media screen and (min-width: 768px)
   .news-item
     max-height: 216px

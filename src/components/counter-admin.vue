@@ -91,10 +91,13 @@ export default {
   &__table
     width: 100%
     th,td
+      font-weight: bold
       padding: 10px
     th
-      text-align: end
+      text-align: start
       padding-left: 30px
+      &:last-child
+        text-align: end
     td
       &:last-child
         color: #a72222

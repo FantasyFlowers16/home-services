@@ -291,6 +291,7 @@ body
     box-shadow: 2px 2px 5px #808080
     padding: 10px 20px
     border-radius: 10px
+    transition: background .3s ease,color .3s ease
     &.mobile
       font-size: 20px
       font-weight: bold
@@ -300,6 +301,7 @@ body
     &.desktop
       display: none
     &:hover
+      transition: background .2s ease,color .2s ease
       background: #275975
       color: white
 
@@ -362,6 +364,7 @@ body
     &__item
       height: 100%
     &__item-container
+      margin-bottom: 30px
       width: calc(50% - 16px)
       &:nth-child(2n)
         margin-left: 32px
